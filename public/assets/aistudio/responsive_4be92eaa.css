@@ -1,0 +1,262 @@
+/* ===================== GLOBAL RESPONSIVE FIXES ===================== */
+
+/* Contact Wrapper Mobile */
+
+
+/* Skills Section */
+@media (max-width: 768px) {
+  .skills {
+    width: 100%;
+  }
+  .skills h4 {
+    font-size: 3rem;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box {
+    width: 90%;
+  }
+}
+
+/* ===================== PART 1 (Video Section) ===================== */
+@media (max-width: 1024px) {
+  .text-section {
+    padding-top: 0;
+  }
+  .menu ul li a, .sound {
+    font-size: 1rem;
+  }
+  .left-nav .social-icons {
+    position: relative;
+    top: -8rem;
+  }
+
+  /* Text scaling for tablet */
+  .text-section .base-text,
+  .text-section .overlay-text {
+    font-size: clamp(4rem, 11vw, 12rem);
+    line-height: 0.9;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Text scaling for mobile */
+  .text-section .base-text,
+  .text-section .overlay-text {
+    font-size: clamp(4.5rem, 17vw, 7rem);
+    line-height: 0.9;
+  }
+  /* Hide left nav on mobile */
+  .left-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Text scaling for extra small */
+  .text-section .base-text,
+  .text-section .overlay-text {
+    font-size: clamp(4rem, 17vw, 5rem);
+    line-height: 0.9;
+  }
+}
+
+/* ===================== ABOUT SECTION ===================== */
+@media (max-width: 1024px) {
+  .about {
+    padding: 60px 20px;
+    width: 100%;
+  }
+  .aboutme {
+    top: 8rem;
+    left: 5rem;
+  }
+  .main {
+    width: 90%;
+    top: -3rem;
+  }
+  .text-area h1,
+  .text-area-hover h1 {
+    font-size: 6vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    align-items: flex-start;
+  }
+  .aboutme {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .aboutme h2 {
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+  }
+  .main {
+    width: 100%;
+    top: 0;
+    flex-direction: column;
+    padding: 0;
+  }
+  .text-area h1,
+  .text-area-hover h1 {
+    font-size: 8vw;
+    line-height: 1;
+  }
+}
+
+@media (max-width: 480px) {
+ 
+  .aboutme h2 {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+  }
+  .text-area h1,
+  .text-area-hover h1 {
+    font-size: 10vw;
+  }
+}
+
+/* ===================== CONTACT SECTION ===================== */
+@media (max-width: 1024px) {
+  .contact-section {
+    padding: 90px 20px;
+    min-height: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .contact-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    top: 20px;
+  }
+  .contact-info {
+   width:200%;
+  }
+  .contact-header h2 {
+    font-size: 2.3rem;
+  }
+  .contact-header p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 15px;
+  }
+  .contact-header h2 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+  }
+  .contact-header p {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  .contact-wrapper {
+    gap: 20px;
+  }
+  .info-box h3 {
+    font-size: 18px;
+  }
+  .info-box p {
+    font-size: 14px;
+  }
+  .contact-form h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-header h2 {
+    font-size: 1.8rem;
+  }
+  .contact-header p {
+    font-size: 0.9rem;
+  }
+  .contact-form button {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+/* ===================== NAV FIX (Left & Right Nav Align) ===================== */
+
+
+@media (max-width: 768px) {
+  .left-nav {
+    display: none;
+  }
+  .right-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 2rem;
+  }
+  .menu ul li a, .sound{
+    font-size: 1.2rem;
+  }
+  .sound{
+    
+    top:19rem;
+    left:30px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .text-area {
+    display: none !important;
+  }
+
+  .text-area-hover {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  .text-area-hover h1 {
+    color: white !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  .text-area-hover span {
+    color: #770777 !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .preloader {
+    display: none !important;
+  }
+
+  .site-main {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .contact-info{
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
