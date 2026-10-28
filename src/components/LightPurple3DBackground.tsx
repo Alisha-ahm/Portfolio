@@ -7,7 +7,7 @@ interface LightPurple3DBackgroundProps {
 }
 
 export const LightPurple3DBackground: React.FC<LightPurple3DBackgroundProps> = ({
-  className = "absolute inset-0 pointer-events-none -z-10 overflow-hidden",
+  className = "absolute inset-0 pointer-events-none overflow-hidden",
   mouseNormalized = { x: 0, y: 0 }
 }) => {
   const mountRef = useRef<HTMLDivElement>(null);

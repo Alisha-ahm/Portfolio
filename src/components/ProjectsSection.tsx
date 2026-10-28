@@ -5,10 +5,18 @@ import { Play, ExternalLink, Code2, Sparkles, LayoutList, LayoutGrid, CheckCircl
 
 interface ProjectsSectionProps {
   onSelectProject: (project: Project) => void;
+  activeCategory?: 'all' | 'live' | 'video' | 'smart-systems' | 'frontend' | 'systems';
+  onCategoryChange?: (cat: 'all' | 'live' | 'video' | 'smart-systems' | 'frontend' | 'systems') => void;
 }
 
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onSelectProject }) => {
-  const [activeCategory, setActiveCategory] = useState<'all' | 'live' | 'video' | 'smart-systems' | 'frontend' | 'systems'>('all');
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+  onSelectProject,
+  activeCategory: controlledCategory,
+  onCategoryChange
+}) => {
+  const [internalCategory, setInternalCategory] = useState<'all' | 'live' | 'video' | 'smart-systems' | 'frontend' | 'systems'>('all');
+  const activeCategory = controlledCategory ?? internalCategory;
+  const setActiveCategory = onCategoryChange ?? setInternalCategory;
   const [viewMode, setViewMode] = useState<'list' | 'grid'>('list');
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
 

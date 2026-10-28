@@ -7,7 +7,7 @@ interface HeroProps {
   onOpenVideo?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenLetter }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenLetter, onOpenVideo }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
 
@@ -85,6 +85,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenLetter }) => {
 
           <a
             href="#projects"
+            onClick={(e) => {
+              if (onOpenVideo) {
+                e.preventDefault();
+                onOpenVideo();
+              }
+            }}
             className="flex items-center gap-2 px-6 py-3.5 rounded-lg bg-white/5 hover:bg-white/10 text-white font-bebas text-xl tracking-wider border border-white/15 transition-all hover:border-[#b651f0]"
           >
             <Play className="w-4 h-4 text-[#b651f0] fill-current" />

@@ -132,17 +132,19 @@ export const ProjectDemoModal: React.FC<ProjectDemoModalProps> = ({ project, onC
           {activeTab === 'video' && project.videoUrl && (
             <div className="space-y-4">
               {project.videoPlatform === 'direct' ? (
-                /* Native MP4 Video Player */
+                /* Native MP4 Video Player with Loading & Error States */
                 <div className="space-y-3">
-                  <div className="rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl relative">
+                  <div className="rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl relative min-h-[280px] flex items-center justify-center">
                     <video
                       key={project.videoUrl}
                       src={project.videoUrl}
                       controls
                       autoPlay
-                      className="w-full max-h-[480px] object-contain mx-auto bg-black"
                       playsInline
+                      preload="metadata"
+                      className="w-full max-h-[500px] object-contain mx-auto bg-black"
                     >
+                      <source src={project.videoUrl} type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                   </div>
@@ -151,49 +153,60 @@ export const ProjectDemoModal: React.FC<ProjectDemoModalProps> = ({ project, onC
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                       Direct High Definition Project Walkthrough Video
                     </span>
-                    <a
-                      href={project.videoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 font-semibold"
-                    >
-                      <span>Open Full Video in New Tab</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href={project.videoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 font-semibold transition-colors"
+                      >
+                        <span>Open Raw Stream</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
                 </div>
               ) : (
-                /* Jumpshare / External Video Card */
-                <div className="p-6 sm:p-10 rounded-2xl bg-gradient-to-b from-[#0f172a] to-[#070b14] border border-cyan-500/30 text-center space-y-5">
-                  <div className="w-16 h-16 rounded-full bg-cyan-500/20 border border-cyan-400/50 text-cyan-400 flex items-center justify-center mx-auto shadow-xl shadow-cyan-500/20">
-                    <Play className="w-8 h-8 fill-current ml-1" />
-                  </div>
-                  <div className="space-y-2">
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-950 text-blue-300 border border-blue-800/80 font-mono">
-                      Jumpshare Video Stream
+                /* Jumpshare / External Video Card with Iframe Preview attempt */
+                <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-b from-[#0f172a] to-[#070b14] border border-cyan-500/30 space-y-5">
+                  <div className="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+                      <span className="text-xs px-2.5 py-0.5 rounded-full bg-blue-950 text-blue-300 border border-blue-800/80 font-mono">
+                        Jumpshare Video Stream
+                      </span>
+                    </div>
+                    <span className="text-xs text-slate-400 font-mono">
+                      Full Recording
                     </span>
-                    <h4 className="text-xl font-bold text-white">
-                      Watch {project.title} Video Recording
-                    </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto leading-relaxed">
-                      Click the button below to watch the live recording demonstrating real-time features, application architecture, and interface responsiveness.
-                    </p>
                   </div>
-                  <div className="pt-2">
+
+                  {/* Responsive Iframe Container */}
+                  <div className="w-full aspect-video rounded-xl overflow-hidden bg-black border border-slate-800 relative shadow-2xl">
+                    <iframe
+                      src={project.videoUrl.replace('/s/', '/embed/')}
+                      title={`${project.title} Video Player`}
+                      className="w-full h-full border-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                      allowFullScreen
+                    />
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                    <p className="text-xs text-slate-400">
+                      If video player takes time to buffer, you can also launch it directly:
+                    </p>
                     <a
                       href={project.videoUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-xl shadow-cyan-500/25 transition-all hover:scale-105"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
                     >
-                      <Play className="w-4 h-4 fill-current" />
-                      <span>Play Video on Jumpshare</span>
-                      <ExternalLink className="w-4 h-4 ml-1" />
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>Open on Jumpshare</span>
+                      <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
                     </a>
                   </div>
-                  <p className="text-[11px] text-slate-500 font-mono">
-                    Direct Link: {project.videoUrl}
-                  </p>
                 </div>
               )}
             </div>
